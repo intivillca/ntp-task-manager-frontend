@@ -1,24 +1,24 @@
 import {
   GET_TASKS,
   CREATE_TASK,
-  UPDATE_TASK,
   DELETE_TASK,
+  UPDATE_TASK,
   SET_LOADING
-} from '../types';
+} from '../types'
 
-export default (state,action) => {
-  switch(applicationCache.type){
+export default (state, action) => {
+  switch(action.type){
     case GET_TASKS:
-      return{
+      return {
         ...state,
         tasks: action.payload,
         loading: false
-      };
+      }
     case SET_LOADING:
-      return{
+      return {
         ...state,
         loading: true
-      };
+      }
     default:
       return state;
   }
