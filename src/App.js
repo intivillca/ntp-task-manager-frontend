@@ -9,7 +9,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faTasks, faTrash, faUser, faExclamationCircle,faSitemap, faEdit, faFile } from '@fortawesome/free-solid-svg-icons'
 
-import TaskState from './context/tasks/TaskState';
+import ApiState from './context/api/apiState';
 import LanguageState from './context/language/languageState';
 
 library.add(fab, faTasks, faTrash, faUser, faExclamationCircle,faSitemap, faEdit, faFile);
@@ -17,7 +17,7 @@ library.add(fab, faTasks, faTrash, faUser, faExclamationCircle,faSitemap, faEdit
 const App = () => {
   return (
     <div className="container-fluid bg-light">
-      <TaskState>
+      <ApiState>
       <LanguageState>
       <Router>
         <Switch>
@@ -26,7 +26,7 @@ const App = () => {
         </Switch>
       </Router>
       </LanguageState>
-      </TaskState>
+      </ApiState>
     </div>
   );
 }

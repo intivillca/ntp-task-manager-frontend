@@ -5,6 +5,7 @@ import { TaskTable } from '../components/ui/TaskTable'
 import { FunctionButton } from '../components/ui/FunctionButton'
 import { Row, Col, Container } from 'react-bootstrap'
 import languageContext from '../context/language/languageContext'
+import { ContextTest } from '../testing/contextTest'
 
 
 const Main = () => {
@@ -12,6 +13,7 @@ const Main = () => {
   const translation = langContext.langPack;
   return (
     <Fragment>
+      <ContextTest />
       <HeaderNav />
       <Container className="main">
         <Row>

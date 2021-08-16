@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { apiGet, apiDelete, apiPatch, apiPost, apiPut } from '../../services/api';
+import { apiGet, apiDelete, apiPatch, apiPost, apiPut } from './api';
 import ApiContext from './apiContext';
 import ApiReducer from './apiReducer';
 import {
@@ -16,7 +16,7 @@ import {
   ADD_PERSON
 } from '../types'
 
-const TaskState = props => {
+const ApiState = props => {
 
   const initialState = {
     tasks: [],
@@ -29,7 +29,6 @@ const TaskState = props => {
 
   const [state, dispatch] = useReducer(ApiReducer, initialState);
 
-  // Get Tasks
   const getTasks = async () => {
     setLoading();
     const tasks = await apiGet('/tasks');
@@ -40,7 +39,26 @@ const TaskState = props => {
 
   }
 
-  // Set Loading
+  const getCategories = async () => {
+    setLoading();
+    const categories = await  apiGet('/categories')
+    dispatch({
+      type: GET_CATEGORIES,
+      payload: categories
+    })
+  }
+
+  const getPeople = async () => {
+    setLoading();
+    const people = await  apiGet('/person')
+    dispatch({
+      type: GET_PEOPLE,
+      payload: people
+    })
+
+  }
+
+
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   return (
@@ -49,8 +67,12 @@ const TaskState = props => {
         tasks: state.tasks,
         task: state.task,
         loading: state.loading,
+        categories: state.categories,
+        people: state.people,
         getTasks,
-        setLoading
+        setLoading,
+        getCategories,
+        getPeople
       }}
     >
       {props.children}
@@ -60,4 +82,4 @@ const TaskState = props => {
 
 }
 
-export default TaskState;
+export default ApiState;

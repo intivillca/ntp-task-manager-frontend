@@ -1,4 +1,4 @@
-import { getToken } from "../components/auth/jwt";
+import { getToken } from "../../components/auth/jwt";
 
 const apiRoot = 'https://localhost:2443';
 

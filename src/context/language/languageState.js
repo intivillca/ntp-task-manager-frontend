@@ -10,7 +10,6 @@ import {
 import { ENG_PACK } from './langpacks/en';
 
 const LanguageState = props => {
-  console.log(ENG_PACK);
   const initialState = {
     lang: 'ENG',
     langPack: ENG_PACK
