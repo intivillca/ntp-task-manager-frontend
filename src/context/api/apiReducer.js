@@ -5,7 +5,8 @@ import {
   UPDATE_TASK,
   SET_LOADING,
   GET_CATEGORIES,
-  GET_PEOPLE
+  GET_PEOPLE,
+  GET_ALL_STATUS
 } from '../types'
 
 export default (state, action) => {
@@ -28,6 +29,13 @@ export default (state, action) => {
         people: action.payload,
         loading: false
       }
+    case GET_ALL_STATUS:
+      return {
+        ...state,
+        status: action.payload,
+        loading: false
+      }
+
     case SET_LOADING:
       return {
         ...state,

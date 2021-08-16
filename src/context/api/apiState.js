@@ -39,6 +39,13 @@ const ApiState = props => {
 
   }
 
+  const createTask = async formData =>{
+    await apiPost('/tasks', formData);
+    dispatch({
+      type: CREATE_TASK
+    })
+  }
+
   const getCategories = async () => {
     setLoading();
     const categories = await  apiGet('/categories')
@@ -57,6 +64,15 @@ const ApiState = props => {
     })
 
   }
+  const getStatus = async () => {
+    setLoading();
+    const status = await  apiGet('/status')
+    dispatch({
+      type: GET_ALL_STATUS,
+      payload: status
+    })
+
+  }
 
 
   const setLoading = () => dispatch({ type: SET_LOADING });
@@ -69,10 +85,13 @@ const ApiState = props => {
         loading: state.loading,
         categories: state.categories,
         people: state.people,
+        status: state.status,
         getTasks,
         setLoading,
         getCategories,
-        getPeople
+        getPeople,
+        getStatus,
+        createTask,
       }}
     >
       {props.children}

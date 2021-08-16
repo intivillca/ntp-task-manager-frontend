@@ -3,7 +3,7 @@ import { ChangeLang } from '../components/ui/ChangeLang'
 import { HeaderNav } from '../components/ui/HeaderNav'
 import { TaskTable } from '../components/ui/TaskTable'
 import { FunctionButton } from '../components/ui/FunctionButton'
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Container } from 'react-bootstrap'
 import languageContext from '../context/language/languageContext'
 import { ContextTest } from '../testing/contextTest'
 
