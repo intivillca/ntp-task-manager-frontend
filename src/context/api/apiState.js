@@ -1,13 +1,19 @@
 import React, { useReducer } from 'react';
 import { apiGet, apiDelete, apiPatch, apiPost, apiPut } from '../../services/api';
-import TaskContext from './taskContext';
-import TaskReducer from './taskReducer';
+import ApiContext from './apiContext';
+import ApiReducer from './apiReducer';
 import {
   GET_TASKS,
   CREATE_TASK,
   DELETE_TASK,
   UPDATE_TASK,
-  SET_LOADING
+  SET_LOADING,
+  GET_ALL_STATUS,
+  ADD_STATUS,
+  GET_CATEGORIES,
+  ADD_CATEGORY,
+  GET_PEOPLE,
+  ADD_PERSON
 } from '../types'
 
 const TaskState = props => {
@@ -15,10 +21,13 @@ const TaskState = props => {
   const initialState = {
     tasks: [],
     task: {},
+    categories: [],
+    people: [],
+    status: [],
     loading: false
   }
 
-  const [state, dispatch] = useReducer(TaskReducer, initialState);
+  const [state, dispatch] = useReducer(ApiReducer, initialState);
 
   // Get Tasks
   const getTasks = async () => {
@@ -28,14 +37,14 @@ const TaskState = props => {
       type: GET_TASKS,
       payload: tasks
     })
-    
+
   }
 
   // Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   return (
-    <TaskContext.Provider
+    <ApiContext.Provider
       value={{
         tasks: state.tasks,
         task: state.task,
@@ -45,7 +54,7 @@ const TaskState = props => {
       }}
     >
       {props.children}
-    </TaskContext.Provider>
+    </ApiContext.Provider>
 
   );
 

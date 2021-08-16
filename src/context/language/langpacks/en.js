@@ -11,5 +11,8 @@ export const ENG_PACK = {
   "EnterUsername" : "Enter your username",
   "Password" : "Password:",
   "EnterPassword" :  "Enter your password",
-  "LogInBut" : "Log in"
+  "LogInBut" : "Log in",
+  "AddTask" : "Add Task",
+  "UpdateTask" : "Update Task",
+  "DeleteTask": "Delete Task"
 }
