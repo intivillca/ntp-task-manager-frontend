@@ -4,12 +4,13 @@ import { Table, Spinner, Container, Button } from 'react-bootstrap'
 import { format } from 'date-fns'
 import { Link } from 'react-router-dom'
 import taskContext from '../../context/tasks/taskContext';
+import languageContext from '../../context/language/languageContext';
 
 export const TaskTable = () => {
   const context = useContext(taskContext)
+  const langContext = useContext(languageContext);
+  const translation = langContext.langPack;
   const {getTasks, loading, tasks} = context;
-  console.log(loading)
-
   useEffect(() => {
     getTasks();
   }, []);
@@ -30,13 +31,13 @@ export const TaskTable = () => {
         <Table striped bordered hover size="sm" variant="dark">
           <thead>
             <tr>
-              <th>Task Name</th>
-              <th>Task Description</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Status</th>
-              <th>Category</th>
-              <th>Person</th>
+              <th>{translation.TaskName}</th>
+              <th>{translation.TaskDesc}</th>
+              <th>{translation.StartDate}</th>
+              <th>{translation.EndDate}</th>
+              <th>{translation.Status}</th>
+              <th>{translation.Category}</th>
+              <th>{translation.Person}</th>
               <th>...</th>
             </tr>
           </thead>
