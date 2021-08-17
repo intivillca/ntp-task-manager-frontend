@@ -48,6 +48,14 @@ const ApiState = props => {
     })
   }
 
+  const updateTask = async (id, formData) => {
+    await apiPut(`/tasks/${id}`, formData);
+    getTasks();
+    dispatch({
+      type: UPDATE_TASK
+    })
+  }
+
   const getCategories = async () => {
     setLoading();
     const categories = await  apiGet('/categories')
@@ -105,7 +113,8 @@ const ApiState = props => {
         getPeople,
         getStatus,
         createTask,
-        getAll
+        getAll,
+        updateTask
       }}
     >
       {props.children}

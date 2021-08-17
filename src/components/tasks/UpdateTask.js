@@ -5,15 +5,16 @@ import { Col, Spinner, Container, Form, Button, Row } from 'react-bootstrap';
 
 export const UpdateTask = (props) => {
   const context = useContext(ApiContext)
-  const { getAll, loading, status, people, categories, tasks, createTask } = context;
+  const { getAll, loading, status, people, categories, tasks, updateTask } = context;
   useEffect(() => {
     getAll();
   }, []);
   const [formData, setFormData] = useState({});
+  const [taskId, setTaskId] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    createTask(formData);
+    updateTask(taskId,formData);
   };
   const handleChange = (e) => {
     const fieldName = e.target.name;
@@ -29,6 +30,9 @@ export const UpdateTask = (props) => {
     )
 
   };
+  const changeTaskId = (ev) => {
+    setTaskId(parseInt(ev.target.value))
+  }
 
   
   if (loading) {
@@ -40,17 +44,16 @@ export const UpdateTask = (props) => {
   }
   
   else {
-    console.log(formData);
     return (
       <Container style={{ padding: "100px" }}>
-        <h1>Update task</h1>
+        <h1>Insert task</h1>
         <Form onSubmit={handleSubmit}>
 
           <Row>
             <Form.Group as={Col} controlId="taskid">
               <Form.Label column sm={2}>Task</Form.Label>
               <Col>
-                <Form.Control onChange={handleChange} as="select" name="taskid">
+                <Form.Control onChange={changeTaskId} as="select" name="taskid">
                   <option key="0" value="">Tasks</option>
                   {
                     tasks.map(task =>

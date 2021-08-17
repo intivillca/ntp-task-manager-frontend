@@ -54,6 +54,10 @@ export default (state, action) => {
       return{
         ...state
       }
+      case UPDATE_TASK:
+      return{
+        ...state
+      }
     default:
       return state;
   }
