@@ -14,6 +14,7 @@ export const AddTask = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     createTask(formData);
+    props.history.push("/")
   };
   const handleChange = (e) => {
     const fieldName = e.target.name;
@@ -130,7 +131,7 @@ export const AddTask = (props) => {
           </Row>
           <br />
           <Row>
-            <Button block type="submit" variant="dark" className="submit" >
+            <Button  block type="submit" variant="dark" className="submit">
               Submit
             </Button>
           </Row>

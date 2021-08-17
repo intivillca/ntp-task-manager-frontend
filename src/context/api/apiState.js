@@ -55,6 +55,15 @@ const ApiState = props => {
       type: UPDATE_TASK
     })
   }
+  
+  const deleteTask = async id => {
+    await apiDelete(`/tasks/${id}`);
+    getTasks();
+    dispatch({
+      type: DELETE_TASK
+    })
+  }
+  
 
   const getCategories = async () => {
     setLoading();
@@ -114,7 +123,8 @@ const ApiState = props => {
         getStatus,
         createTask,
         getAll,
-        updateTask
+        updateTask,
+        deleteTask,
       }}
     >
       {props.children}

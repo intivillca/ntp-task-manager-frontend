@@ -15,6 +15,7 @@ export const UpdateTask = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     updateTask(taskId,formData);
+    props.history.push("/")
   };
   const handleChange = (e) => {
     const fieldName = e.target.name;

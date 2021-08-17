@@ -7,25 +7,31 @@ import './App.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faTasks, faTrash, faUser, faExclamationCircle,faSitemap, faEdit, faFile } from '@fortawesome/free-solid-svg-icons'
+import { faTasks, faTrash, faUser, faExclamationCircle, faSitemap, faEdit, faFile } from '@fortawesome/free-solid-svg-icons'
 
 import ApiState from './context/api/apiState';
 import LanguageState from './context/language/languageState';
+import { AddTask } from './components/tasks/AddTask';
+import { DeleteTask } from './components/tasks/DeleteTask';
+import { UpdateTask } from './components/tasks/UpdateTask';
 
-library.add(fab, faTasks, faTrash, faUser, faExclamationCircle,faSitemap, faEdit, faFile);
+library.add(fab, faTasks, faTrash, faUser, faExclamationCircle, faSitemap, faEdit, faFile);
 
 const App = () => {
   return (
     <div className="container-fluid bg-light">
       <ApiState>
-      <LanguageState>
-      <Router>
-        <Switch>
-          <ProtectedRoute path="/" component={Main} exact />
-          <Route path="/login" component={Login} />
-        </Switch>
-      </Router>
-      </LanguageState>
+        <LanguageState>
+          <Router>
+            <Switch>
+              <ProtectedRoute path="/update" component={UpdateTask} exact />
+              <ProtectedRoute path="/delete" component={DeleteTask} exact />
+              <ProtectedRoute path="/add" component={AddTask} exact />
+              <ProtectedRoute path="/" component={Main} exact />
+              <Route path="/login" component={Login} />
+            </Switch>
+          </Router>
+        </LanguageState>
       </ApiState>
     </div>
   );

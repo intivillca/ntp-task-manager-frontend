@@ -1,4 +1,5 @@
 import React, { Fragment, useContext } from 'react'
+
 import { ChangeLang } from '../components/ui/ChangeLang'
 import { HeaderNav } from '../components/ui/HeaderNav'
 import { TaskTable } from '../components/ui/TaskTable'
@@ -17,9 +18,9 @@ const Main = () => {
       <HeaderNav />
       <Container className="main">
         <Row>
-          <FunctionButton link="about" icon="tasks" text={translation.AddTask} />
+          <FunctionButton link="add" icon="tasks" text={translation.AddTask} />
           <FunctionButton link="update" icon="edit" text={translation.UpdateTask} />
-          <FunctionButton link="remove" icon="trash" text={translation.DeleteTask} />
+          <FunctionButton link="delete" icon="trash" text={translation.DeleteTask} />
         </Row>
 
         <TaskTable/>

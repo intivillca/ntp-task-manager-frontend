@@ -58,6 +58,10 @@ export default (state, action) => {
       return{
         ...state
       }
+      case DELETE_TASK:
+        return{
+          ...state
+        }
     default:
       return state;
   }

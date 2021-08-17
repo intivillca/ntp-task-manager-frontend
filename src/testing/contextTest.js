@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { AddTask } from '../components/tasks/AddTask';
 import { UpdateTask } from '../components/tasks/UpdateTask';
+import { DeleteTask } from '../components/tasks/DeleteTask';
 
 export const ContextTest = () => {
   const context = useContext(ApiContext)
@@ -23,7 +24,7 @@ export const ContextTest = () => {
 
   return (
     <>
-    <UpdateTask/>
+  
     </>
   )
 }
