@@ -22,7 +22,7 @@ const Main = () => {
           <FunctionButton link="remove" icon="trash" text={translation.DeleteTask} />
         </Row>
 
-        <TaskTable />
+        <TaskTable/>
       </Container>
 
       <ChangeLang />

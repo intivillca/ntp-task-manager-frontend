@@ -13,7 +13,8 @@ import {
   GET_CATEGORIES,
   ADD_CATEGORY,
   GET_PEOPLE,
-  ADD_PERSON
+  ADD_PERSON,
+  GET_ALL
 } from '../types'
 
 const ApiState = props => {
@@ -41,6 +42,7 @@ const ApiState = props => {
 
   const createTask = async formData =>{
     await apiPost('/tasks', formData);
+    getTasks();
     dispatch({
       type: CREATE_TASK
     })
@@ -71,7 +73,18 @@ const ApiState = props => {
       type: GET_ALL_STATUS,
       payload: status
     })
-
+  }
+  const getAll = async () => {
+    setLoading();
+    const [categories, people, status] = await Promise.all([
+      apiGet('/categories'),
+      apiGet('/person'),
+      apiGet('/status'),
+    ]);
+    dispatch({
+      type: GET_ALL,
+      payload: {categories,people,status}
+    })
   }
 
 
@@ -92,6 +105,7 @@ const ApiState = props => {
         getPeople,
         getStatus,
         createTask,
+        getAll
       }}
     >
       {props.children}

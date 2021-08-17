@@ -11,3 +11,4 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const GET_PEOPLE = 'GET_PEOPLE';
 export const ADD_PERSON = 'ADD_PERSON';
+export const GET_ALL = 'GET_ALL';

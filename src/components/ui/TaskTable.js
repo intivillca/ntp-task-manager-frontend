@@ -16,8 +16,6 @@ export const TaskTable = () => {
   }, []);
 
 
-
-
   if (loading) {
     return (
       <Spinner animation="border" role="status">
@@ -28,7 +26,6 @@ export const TaskTable = () => {
 
 
   else {
-    console.log(context);
     return (
       <Container>
         <Table striped bordered hover size="sm" variant="dark">
