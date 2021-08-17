@@ -7,6 +7,7 @@ import { FunctionButton } from '../components/ui/FunctionButton'
 import { Row, Container } from 'react-bootstrap'
 import languageContext from '../context/language/languageContext'
 import { ContextTest } from '../testing/contextTest'
+import { SearchTask } from '../components/tasks/SearchTask'
 
 
 const Main = () => {
@@ -16,13 +17,8 @@ const Main = () => {
     <Fragment>
       <ContextTest />
       <HeaderNav />
-      <Container className="main">
-        <Row>
-          <FunctionButton link="add" icon="tasks" text={translation.AddTask} />
-          <FunctionButton link="update" icon="edit" text={translation.UpdateTask} />
-          <FunctionButton link="delete" icon="trash" text={translation.DeleteTask} />
-        </Row>
-
+      <Container className="main" style={{ padding: "50px" }}>
+        <SearchTask />
         <TaskTable/>
       </Container>
 

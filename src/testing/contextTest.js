@@ -6,6 +6,8 @@ import { Button } from 'react-bootstrap';
 import { AddTask } from '../components/tasks/AddTask';
 import { UpdateTask } from '../components/tasks/UpdateTask';
 import { DeleteTask } from '../components/tasks/DeleteTask';
+import { SearchTask } from '../components/tasks/SearchTask';
+import { apiGet } from '../context/api/api';
 
 export const ContextTest = () => {
   const context = useContext(ApiContext)
@@ -13,7 +15,7 @@ export const ContextTest = () => {
   const translation = langContext.langPack;
   const { getTasks, getCategories, getPeople, getStatus, createTask, getAll } = context;
 
-
+ 
   useEffect(() => {
     getTasks();
     getCategories();
@@ -24,7 +26,6 @@ export const ContextTest = () => {
 
   return (
     <>
-  
     </>
   )
 }
