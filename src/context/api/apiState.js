@@ -112,14 +112,14 @@ const ApiState = props => {
 
   const addCategory = async formData => {
     await apiPost('/categories', formData);
-    getTasks();
+    getCategories();
     dispatch({
       type: ADD_CATEGORY
     })
   }
   const addPerson = async formData => {
     await apiPost('/person', formData);
-    getTasks();
+    getPeople();
     dispatch({
       type: ADD_PERSON
     })
