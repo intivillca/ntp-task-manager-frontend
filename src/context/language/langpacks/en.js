@@ -14,5 +14,7 @@ export const ENG_PACK = {
   "LogInBut" : "Log in",
   "AddTask" : "Add Task",
   "UpdateTask" : "Update Task",
-  "DeleteTask": "Delete Task"
+  "DeleteTask": "Delete Task",
+  "Category" : "Category",
+  "Home" : "Home"
 }

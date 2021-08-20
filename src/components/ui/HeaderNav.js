@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { getTokenData, unsetToken } from '../auth/jwt';
+import languageContext from '../../context/language/languageContext';
 
 export const HeaderNav = (props) => {
   const userData = getTokenData();
   const isNotLogin = window.location.href !== '/login';
+  const langContext = useContext(languageContext);
+  const translation = langContext.langPack;
 
   return (
     <header className="app-header">
@@ -15,10 +18,10 @@ export const HeaderNav = (props) => {
         <Navbar.Brand as={Link} to="/">NTP Projekt</Navbar.Brand>
 
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/">Home</Nav.Link>
-          <Nav.Link as={Link} to="/add">Add Task</Nav.Link>
-          <Nav.Link as={Link} to="/update">Update Tasks</Nav.Link>
-          <Nav.Link as={Link} to="/delete">Remove Task</Nav.Link>
+          <Nav.Link as={Link} to="/">{translation.Home}</Nav.Link>
+          <Nav.Link as={Link} to="/add">{translation.AddTask}</Nav.Link>
+          <Nav.Link as={Link} to="/update">{translation.UpdateTask}</Nav.Link>
+          <Nav.Link as={Link} to="/delete">{translation.DeleteTask}</Nav.Link>
           <Nav.Link as={Link} to="/status">Add Status</Nav.Link>
           <Nav.Link as={Link} to="/category">Add Category</Nav.Link>
         </Nav>

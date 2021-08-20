@@ -10,7 +10,7 @@ export const TaskTable = () => {
   const context = useContext(ApiContext)
   const langContext = useContext(languageContext);
   const translation = langContext.langPack;
-  const {getTasks, loading, tasks,} = context;
+  const {getTasks, loading, tasks} = context;
   useEffect(() => {
     getTasks();
   }, []);

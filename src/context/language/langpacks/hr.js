@@ -14,5 +14,7 @@ export const HR_PACK = {
   "LogInBut" : "Prijavite se",
   "AddTask" : "Dodaj zadatak",
   "UpdateTask" : "Ažuriraj zadatak",
-  "DeleteTask": "Obriši zadatak"
+  "DeleteTask": "Obriši zadatak",
+  "Category" : "Kategorija",
+  "Home" : "Naslovna"
 }
