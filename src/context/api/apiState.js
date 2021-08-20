@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import { apiGet, apiDelete, apiPatch, apiPost, apiPut } from './api';
 import ApiContext from './apiContext';
 import ApiReducer from './apiReducer';
@@ -30,14 +30,20 @@ const ApiState = props => {
 
   const [state, dispatch] = useReducer(ApiReducer, initialState);
 
+  const [searchString, setSearchString] = useState('');
+
   const getTasks = async () => {
     setLoading();
-    const tasks = await apiGet('/tasks');
+    let query = '';
+    if (searchString.trim()) {
+      const searchParam = encodeURIComponent(searchString.trim());
+      query = `?search=${searchParam}`;
+    }
+    const tasks = await apiGet(`/tasks${query}`);
     dispatch({
       type: GET_TASKS,
       payload: tasks
     })
-
   }
 
   const createTask = async formData =>{
@@ -133,6 +139,8 @@ const ApiState = props => {
   return (
     <ApiContext.Provider
       value={{
+        searchString,
+        setSearchString,
         tasks: state.tasks,
         task: state.task,
         loading: state.loading,

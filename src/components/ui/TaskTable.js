@@ -11,13 +11,12 @@ export const TaskTable = () => {
   const context = useContext(ApiContext)
   const langContext = useContext(languageContext);
   const translation = langContext.langPack;
-  const { getTasks, loading, tasks } = context;
+  const { getTasks, searchString, loading, tasks } = context;
 
   useEffect(() => {
     getTasks();
-  }, []);
-
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchString]);
 
   if (loading) {
     return (
