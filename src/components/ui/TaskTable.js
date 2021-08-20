@@ -5,15 +5,18 @@ import { format } from 'date-fns'
 import { Link } from 'react-router-dom'
 import ApiContext from '../../context/api/apiContext';
 import languageContext from '../../context/language/languageContext';
+import exportFromJSON from 'export-from-json'
 
 export const TaskTable = () => {
   const context = useContext(ApiContext)
   const langContext = useContext(languageContext);
   const translation = langContext.langPack;
-  const {getTasks, loading, tasks} = context;
+  const { getTasks, loading, tasks } = context;
+
   useEffect(() => {
     getTasks();
   }, []);
+
 
 
   if (loading) {
@@ -52,7 +55,28 @@ export const TaskTable = () => {
                 <td>{item.status}</td>
                 <td>{item.category}</td>
                 <td>{item.firstname + ' ' + item.lastname}</td>
-                <td><Link to={{ pathname: 'update/' + item.id, state: item.id }}><Button variant="secondary">Edit</Button></Link></td>
+                <td><Button
+                  onClick={
+                    () => exportFromJSON({
+                      data: item,
+                      fileName: item.id + ' ' + item.taskname,
+                      exportType: exportFromJSON.types.xml
+                    })
+                  }
+                  variant="secondary"
+                > Export as XML </Button>
+
+                  <Button 
+                  href={`
+                    data:text/json;
+                    charset=utf-8,
+                    ${encodeURIComponent(JSON.stringify(item)
+                    )}`}
+                  download={item.id + ' ' + item.taskname + '.json'}
+                  variant = "secondary"
+                  > Export as JSON </Button>
+
+                </td>
               </tr>)
               )
             }

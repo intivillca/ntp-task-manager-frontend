@@ -38,7 +38,10 @@ export const ContextTest = () => {
     data={categories} 
     paramName={"category"} 
     tableParam={translation.Category} />
-    <AddSpc function={addCategory}/>
+    <AddSpc 
+    function={addCategory}
+    title = {translation.Category}
+    />
     </>
   )
 }
