@@ -74,6 +74,9 @@ export const TaskTable = () => {
                   download={item.id + ' ' + item.taskname + '.json'}
                   variant = "secondary"
                   > Export as JSON </Button>
+                  <Link to={`/update/${item.id}`}>
+                    <Button variant="secondary">Edit</Button>
+                    </Link>
 
                 </td>
               </tr>)
