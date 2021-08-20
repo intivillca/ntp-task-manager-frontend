@@ -104,6 +104,29 @@ const ApiState = props => {
     })
   }
 
+  const addCategory = async formData => {
+    await apiPost('/categories', formData);
+    getTasks();
+    dispatch({
+      type: ADD_CATEGORY
+    })
+  }
+  const addPerson = async formData => {
+    await apiPost('/person', formData);
+    getTasks();
+    dispatch({
+      type: ADD_PERSON
+    })
+  }
+
+  const addStatus = async formData => {
+    await apiPost('/status', formData);
+    getTasks();
+    dispatch({
+      type: ADD_STATUS
+    })
+  }
+
 
   const setLoading = () => dispatch({ type: SET_LOADING });
 
@@ -125,6 +148,8 @@ const ApiState = props => {
         getAll,
         updateTask,
         deleteTask,
+        addCategory,
+        addPerson,
       }}
     >
       {props.children}

@@ -7,7 +7,10 @@ import {
   GET_CATEGORIES,
   GET_PEOPLE,
   GET_ALL_STATUS,
-  GET_ALL
+  GET_ALL,
+  ADD_CATEGORY,
+  ADD_PERSON,
+  ADD_STATUS
 } from '../types'
 
 export default (state, action) => {
@@ -59,6 +62,18 @@ export default (state, action) => {
         ...state
       }
       case DELETE_TASK:
+        return{
+          ...state
+        }
+      case ADD_CATEGORY:
+        return{
+          ...state
+        }
+      case ADD_PERSON:
+        return{
+          ...state
+        }
+      case ADD_STATUS:
         return{
           ...state
         }

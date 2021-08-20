@@ -9,14 +9,14 @@ import { DeleteTask } from '../components/tasks/DeleteTask';
 import { SearchTask } from '../components/tasks/SearchTask';
 import { apiGet } from '../context/api/api';
 import { SpcTable } from '../components/ui/SpcTable';
+import { AddSpc } from '../components/ui/AddSpc';
 
 export const ContextTest = () => {
   const context = useContext(ApiContext)
   const langContext = useContext(languageContext);
   const translation = langContext.langPack;
-  const { getTasks, getCategories, getPeople, getStatus, createTask, getAll, status,categories,people } = context;
+  const { getTasks, getCategories, getPeople, getStatus, createTask, getAll, status,categories,people, addCategory } = context;
 
- 
   useEffect(() => {
     getTasks();
     getCategories();
@@ -38,6 +38,7 @@ export const ContextTest = () => {
     data={categories} 
     paramName={"category"} 
     tableParam={translation.Category} />
+    <AddSpc function={addCategory}/>
     </>
   )
 }
