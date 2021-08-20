@@ -45,6 +45,7 @@ export default (state, action) => {
         status: action.payload.status,
         people: action.payload.people,
         categories: action.payload.categories,
+        tasks: action.payload.tasks,
         loading: false
       }
 

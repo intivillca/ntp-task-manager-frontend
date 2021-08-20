@@ -99,14 +99,15 @@ const ApiState = props => {
   }
   const getAll = async () => {
     setLoading();
-    const [categories, people, status] = await Promise.all([
+    const [tasks, categories, people, status] = await Promise.all([
+      apiGet('/tasks'),
       apiGet('/categories'),
       apiGet('/person'),
       apiGet('/status'),
     ]);
     dispatch({
       type: GET_ALL,
-      payload: {categories,people,status}
+      payload: {categories, people, status, tasks}
     })
   }
 
