@@ -1,14 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ApiContext from '../../context/api/apiContext';
 import { Col, Spinner, Container, Form, Button, Row } from 'react-bootstrap';
+import { useHistory, useParams } from 'react-router-dom';
 
 
 export const UpdateTask = (props) => {
-  const context = useContext(ApiContext)
+  const context = useContext(ApiContext);
+  const history = useHistory();
+
   const { getAll, loading, status, people, categories, tasks, updateTask, taskIsSelected} = context;
 
   const [formData, setFormData] = useState({});
-  const [taskId, setTaskId] = useState(0);
+
+  const taskIdVal = useParams().taskId;
+  const taskId = taskIdVal ? parseInt(taskIdVal, 10) : 0;
+  const setTaskId = (taskId) => {
+    history.push(`/update/${taskId}`);
+  }
 
   useEffect(() => {
     getAll();
@@ -28,7 +36,7 @@ export const UpdateTask = (props) => {
     updateTask(taskId, formData);
     props.history.push("/")
   };
-  
+
   const handleChange = (e) => {
     const fieldName = e.target.name;
     if (!fieldName) {
@@ -67,7 +75,7 @@ export const UpdateTask = (props) => {
             <Form.Group as={Col} controlId="taskid">
               <Form.Label column sm={2}>Task</Form.Label>
               <Col>
-                <Form.Control onChange={changeTaskId} as="select" name="taskid">
+                <Form.Control onChange={changeTaskId} value={taskId} as="select" name="taskid">
                   <option key="0" value="">Tasks</option>
                   {
                     tasks.map(task =>

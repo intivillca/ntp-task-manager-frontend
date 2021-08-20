@@ -24,7 +24,7 @@ const App = () => {
         <LanguageState>
           <Router>
             <Switch>
-              <ProtectedRoute path="/update" component={UpdateTask} exact />
+              <ProtectedRoute path="/update/:taskId?" component={UpdateTask} exact />
               <ProtectedRoute path="/delete" component={DeleteTask} exact />
               <ProtectedRoute path="/add" component={AddTask} exact />
               <ProtectedRoute path="/" component={Main} exact />
