@@ -5,7 +5,7 @@ import { Col, Spinner, Container, Form, Button, Row } from 'react-bootstrap';
 
 export const UpdateTask = (props) => {
   const context = useContext(ApiContext)
-  const { getAll, loading, status, people, categories, tasks, updateTask } = context;
+  const { getAll, loading, status, people, categories, tasks, updateTask, taskIsSelected} = context;
   useEffect(() => {
     getAll();
   }, []);
@@ -14,9 +14,10 @@ export const UpdateTask = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    updateTask(taskId,formData);
+    updateTask(taskId, formData);
     props.history.push("/")
   };
+  
   const handleChange = (e) => {
     const fieldName = e.target.name;
     if (!fieldName) {
@@ -26,16 +27,24 @@ export const UpdateTask = (props) => {
       prevState =>
       ({
         ...prevState,
-        [fieldName]: e.target.value
+        [fieldName]: e.target.value,
       })
     )
 
   };
   const changeTaskId = (ev) => {
     setTaskId(parseInt(ev.target.value))
+    setFormData(
+      prevState =>
+      ({
+        ...prevState,
+        ...tasks.find((task)=>task.id === taskId)
+      })
+    )
   }
+  console.log(formData)
 
-  
+
   if (loading) {
     return (
       <Spinner animation="border" role="status">
@@ -43,7 +52,7 @@ export const UpdateTask = (props) => {
       </Spinner>
     );
   }
-  
+
   else {
     return (
       <Container style={{ padding: "100px" }}>
