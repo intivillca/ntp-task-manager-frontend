@@ -2,15 +2,28 @@ import React, { useContext, useEffect, useState } from 'react';
 import ApiContext from '../../context/api/apiContext';
 import { Col, Spinner, Container, Form, Button, Row } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
+import { format } from 'date-fns'
 
 
 export const UpdateTask = (props) => {
   const context = useContext(ApiContext);
   const history = useHistory();
 
-  const { getAll, loading, status, people, categories, tasks, updateTask, taskIsSelected} = context;
+  const { getAll, loading, status, people, categories, tasks, updateTask} = context;
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    taskname: "",
+    taskdesc: "",
+    statusid: 0,
+    status: "",
+    person: "",
+    personid: 0,
+    category: "",
+    categoryid: 0,
+    id: 0,
+    startdate: format(new Date('1-1-2000'), 'yyyy-MM-dd'),
+    enddate: format(new Date('1-1-2000'), 'yyyy-MM-dd')
+  });
 
   const taskIdVal = useParams().taskId;
   const taskId = taskIdVal ? parseInt(taskIdVal, 10) : 0;
@@ -28,7 +41,13 @@ export const UpdateTask = (props) => {
       ? tasks.find((task) => task.id === taskId)
       : {}; // There will be no task initially, just empty everything
     // Object rest to clone the task, otherwise the form will modify the referenced value
-    setFormData({ ...task });
+    setFormData(
+      prevState =>
+      ({
+        ...prevState,
+        ...task
+      })
+    );
   }, [setFormData, taskId, tasks]);
 
   const handleSubmit = async (e) => {
@@ -54,7 +73,6 @@ export const UpdateTask = (props) => {
   const changeTaskId = (ev) => {
     setTaskId(parseInt(ev.target.value))
   }
-  console.log(formData)
 
 
   if (loading) {
@@ -64,6 +82,7 @@ export const UpdateTask = (props) => {
       </Spinner>
     );
   }
+
 
   else {
     return (
@@ -117,7 +136,7 @@ export const UpdateTask = (props) => {
                 Start Date
               </Form.Label>
               <Col>
-                <Form.Control onChange={handleChange} value={formData.startdate} name="startdate" type="date" />
+                <Form.Control onChange={handleChange} value={format(new Date(formData.startdate), 'yyyy-MM-dd')} name="startdate" type="date" />
               </Col>
             </Form.Group>
             <Form.Group as={Col} controlId="end_date">
@@ -125,7 +144,7 @@ export const UpdateTask = (props) => {
                 End Date
               </Form.Label>
               <Col>
-                <Form.Control onChange={handleChange} value={formData.enddate} name="enddate" type="date" />
+                <Form.Control onChange={handleChange} value={format(new Date(formData.enddate), 'yyyy-MM-dd')} name="enddate" type="date" />
               </Col>
             </Form.Group>
           </Row>
