@@ -33,6 +33,7 @@ export const UpdateTask = (props) => {
 
   useEffect(() => {
     getAll();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Set form data from task when switching tasks
