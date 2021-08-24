@@ -6,11 +6,15 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { getTokenData, unsetToken } from '../auth/jwt';
 import languageContext from '../../context/language/languageContext';
 import { ChangeLang } from './ChangeLang';
+import { useHistory } from 'react-router-dom';
+
 
 export const HeaderNav = (props) => {
   const userData = getTokenData();
   const langContext = useContext(languageContext);
   const translation = langContext.langPack;
+  const history = useHistory();
+ 
 
   return (
     <header className="app-header">
@@ -36,7 +40,7 @@ export const HeaderNav = (props) => {
           "right": "50px"
         }}>
           <Navbar.Text style={{"padding-right" : "10px"}}>{userData.username}</Navbar.Text>
-          <Button variant="danger" onClick={() => signOut(props.history)}>
+          <Button variant="danger" onClick={() => signOut(history)}>
             <FontAwesomeIcon icon={faSignOutAlt} />
             Sign out
           </Button>
@@ -47,6 +51,7 @@ export const HeaderNav = (props) => {
   );
 
   function signOut(history) {
+    
     unsetToken();
     props.history.push("/")
   }

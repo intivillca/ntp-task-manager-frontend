@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useRef } from 'react'
 
 import { HeaderNav } from '../components/ui/HeaderNav'
 import { TaskTable } from '../components/ui/TaskTable'
@@ -8,9 +8,11 @@ import languageContext from '../context/language/languageContext'
 import { SearchTask } from '../components/tasks/SearchTask'
 
 
+
 const Main = (props) => {
   const langContext = useContext(languageContext);
   const translation = langContext.langPack;
+  const componentRef = useRef();
   return (
     <Fragment>
       <HeaderNav />
@@ -36,6 +38,7 @@ const Main = (props) => {
                 link={"delete"}
                 icon={"trash"}
                 text={translation.DeleteTask} />
+
             </ButtonGroup>
           </Row>
         </Container>
@@ -43,7 +46,7 @@ const Main = (props) => {
 
         <SearchTask />
 
-        <TaskTable />
+        <TaskTable ref={componentRef} />
 
       </Container>
     </Fragment>

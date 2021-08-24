@@ -4,7 +4,7 @@ import { HeaderNav } from '../components/ui/HeaderNav'
 
 export const AddTaskRoute = () => {
   return (
-    <div>
+    <div className="AddTask">
       <HeaderNav/>
       <AddTask />
     </div>

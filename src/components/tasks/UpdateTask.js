@@ -3,13 +3,16 @@ import ApiContext from '../../context/api/apiContext';
 import { Col, Spinner, Container, Form, Button, Row } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
 import { format } from 'date-fns'
+import languageContext from '../../context/language/languageContext';
 
 
 export const UpdateTask = (props) => {
   const context = useContext(ApiContext);
   const history = useHistory();
+  const langContext = useContext(languageContext);
+  const translation = langContext.langPack;
 
-  const { getAll, loading, status, people, categories, tasks, updateTask} = context;
+  const { getAll, loading, status, people, categories, tasks, updateTask } = context;
 
   const [formData, setFormData] = useState({
     taskname: "",
@@ -33,15 +36,15 @@ export const UpdateTask = (props) => {
 
   useEffect(() => {
     getAll();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Set form data from task when switching tasks
+
   useEffect(() => {
     const task = taskId
       ? tasks.find((task) => task.id === taskId)
-      : {}; // There will be no task initially, just empty everything
-    // Object rest to clone the task, otherwise the form will modify the referenced value
+      : {};
+
     setFormData(
       prevState =>
       ({
@@ -79,7 +82,7 @@ export const UpdateTask = (props) => {
   if (loading) {
     return (
       <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
+        <span className="sr-only"></span>
       </Spinner>
     );
   }
@@ -88,15 +91,15 @@ export const UpdateTask = (props) => {
   else {
     return (
       <Container style={{ padding: "100px" }}>
-        <h1>Insert task</h1>
+        <h1>{translation.UpdateTask}</h1>
         <Form onSubmit={handleSubmit}>
 
           <Row>
             <Form.Group as={Col} controlId="taskid">
-              <Form.Label column sm={2}>Task</Form.Label>
+              <Form.Label column sm={2}>{translation.Task}</Form.Label>
               <Col>
                 <Form.Control onChange={changeTaskId} value={taskId} as="select" name="taskid">
-                  <option key="0" value="">Tasks</option>
+                  <option key="0" value="">{translation.Tasks}</option>
                   {
                     tasks.map(task =>
                       <option key={task.id} value={task.id}>{task.taskname}</option>
@@ -111,10 +114,10 @@ export const UpdateTask = (props) => {
           <Row>
             <Form.Group as={Col} controlId="task_name">
               <Form.Label sm={2}>
-                Task Name
+                {translation.TaskName}
               </Form.Label>
               <Col>
-                <Form.Control onChange={handleChange} value={formData.taskname} name="taskname" type="text" placeholder="Task name" />
+                <Form.Control onChange={handleChange} value={formData.taskname} name="taskname" type="text" placeholder={translation.TaskName} />
               </Col>
             </Form.Group>
           </Row>
@@ -123,26 +126,26 @@ export const UpdateTask = (props) => {
           <Row>
             <Form.Group as={Col} controlId="task_desc">
               <Form.Label column sm={2}>
-                Task Description
+                {translation.TaskDesc}
               </Form.Label>
               <Col>
-                <Form.Control onChange={handleChange} value={formData.taskdesc} name="taskdesc" as="textarea" rows="4" cols="50" placeholder="Task description" />
+                <Form.Control onChange={handleChange} value={formData.taskdesc} name="taskdesc" as="textarea" rows="4" cols="50" placeholder={translation.TaskDesc} />
               </Col>
             </Form.Group>
           </Row>
 
           <Row>
             <Form.Group as={Col} controlId="start_date">
-              <Form.Label column sm={2}>
-                Start Date
+              <Form.Label>
+                {translation.StartDate}
               </Form.Label>
               <Col>
                 <Form.Control onChange={handleChange} value={format(new Date(formData.startdate), 'yyyy-MM-dd')} name="startdate" type="date" />
               </Col>
             </Form.Group>
             <Form.Group as={Col} controlId="end_date">
-              <Form.Label column sm={2}>
-                End Date
+              <Form.Label>
+                {translation.EndDate}
               </Form.Label>
               <Col>
                 <Form.Control onChange={handleChange} value={format(new Date(formData.enddate), 'yyyy-MM-dd')} name="enddate" type="date" />
@@ -152,7 +155,7 @@ export const UpdateTask = (props) => {
 
           <Row>
             <Form.Group as={Col} controlId="categories">
-              <Form.Label>Category</Form.Label>
+              <Form.Label>{translation.Category}</Form.Label>
               <Col>
                 <Form.Control onChange={handleChange} value={formData.categoryid} name="categoryid" as="select">
                   <option key="0" value="0"> </option>
@@ -165,7 +168,7 @@ export const UpdateTask = (props) => {
               </Col>
             </Form.Group>
             <Form.Group as={Col} controlId="status">
-              <Form.Label>Status</Form.Label>
+              <Form.Label>{translation.Status}</Form.Label>
               <Col>
                 <Form.Control onChange={handleChange} value={formData.statusid} name="statusid" as="select">
                   <option key="0" value="0"> </option>
@@ -178,7 +181,7 @@ export const UpdateTask = (props) => {
               </Col>
             </Form.Group>
             <Form.Group as={Col} controlId="Person">
-              <Form.Label>Person</Form.Label>
+              <Form.Label>{translation.Person}</Form.Label>
               <Col>
                 <Form.Control onChange={handleChange} value={formData.personid} name="personid" as="select">
                   <option key="0" value="0"> </option>
@@ -194,7 +197,7 @@ export const UpdateTask = (props) => {
           <br />
           <Row>
             <Button block type="submit" variant="dark" className="submit" >
-              Submit
+              {translation.Submit}
             </Button>
           </Row>
 

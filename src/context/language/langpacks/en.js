@@ -22,5 +22,6 @@ export const ENG_PACK = {
   "GenerateReport" : "Generate Report",
   "Tasks": "Tasks",
   "Submit" : "Submit",
-  "InsertTask" : "Insert Task"
+  "InsertTask" : "Insert Task",
+  "Task" : "Task"
 }

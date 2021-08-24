@@ -12,7 +12,7 @@ import { faTasks, faTrash, faUser, faHistory, faSitemap, faEdit, faFile, faSearc
 import ApiState from './context/api/apiState';
 import LanguageState from './context/language/languageState';
 import { DeleteTask } from './components/tasks/DeleteTask';
-import { UpdateTask } from './components/tasks/UpdateTask';
+import { UpdateTaskRoute } from './routes/UpdateTaskRoute';
 import { AddTaskRoute } from './routes/AddTaskRoute';
 
 library.add(fab, faTasks, faTrash, faUser, faHistory, faSitemap, faEdit, faFile, faSearch);
@@ -24,7 +24,7 @@ const App = (props) => {
         <LanguageState>
           <Router>
             <Switch>
-              <ProtectedRoute path="/update/:taskId?" component={UpdateTask} exact />
+              <ProtectedRoute path="/update/:taskId?" component={UpdateTaskRoute} exact />
               <ProtectedRoute path="/delete" component={DeleteTask} exact />
               <ProtectedRoute path="/add" component={AddTaskRoute} exact />
               <ProtectedRoute path="/" component={Main} exact />
