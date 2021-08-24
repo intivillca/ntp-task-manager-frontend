@@ -23,5 +23,8 @@ export const ENG_PACK = {
   "Tasks": "Tasks",
   "Submit" : "Submit",
   "InsertTask" : "Insert Task",
-  "Task" : "Task"
+  "Task" : "Task",
+  "ExportJSON" : "Export as JSON",
+  "ExportXML" : "Export as XML",
+  "Edit" : "Edit",
 }

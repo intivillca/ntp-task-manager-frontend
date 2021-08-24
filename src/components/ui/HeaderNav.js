@@ -53,6 +53,6 @@ export const HeaderNav = (props) => {
   function signOut(history) {
     
     unsetToken();
-    props.history.push("/")
+    history.push("/")
   }
 }

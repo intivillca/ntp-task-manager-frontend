@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import ApiContext from '../../context/api/apiContext';
 import languageContext from '../../context/language/languageContext';
 import { Col, Spinner, Container, Form, Button, Row } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+
 
 
 export const AddTask = (props) => {
+  const history = useHistory();
   const context = useContext(ApiContext)
   const langContext = useContext(languageContext);
   const translation = langContext.langPack;
@@ -18,7 +21,7 @@ export const AddTask = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     createTask(formData);
-    props.history.push("/")
+    history.push("/")
   };
   const handleChange = (e) => {
     const fieldName = e.target.name;

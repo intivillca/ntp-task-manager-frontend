@@ -63,20 +63,24 @@ export const TaskTable = () => {
                     })
                   }
                   variant="secondary"
-                > Export as XML </Button>
+                  size="sm"
+                > {translation.ExportXML} </Button>
 
-                  <Button 
-                  href={`
+                  <Button
+                    size="sm"
+                    href={`
                     data:text/json;
                     charset=utf-8,
                     ${encodeURIComponent(JSON.stringify(item)
                     )}`}
-                  download={item.id + ' ' + item.taskname + '.json'}
-                  variant = "secondary"
-                  > Export as JSON </Button>
+                    download={item.id + ' ' + item.taskname + '.json'}
+                    variant="secondary"
+                  > {translation.ExportJSON} </Button>
                   <Link to={`/update/${item.id}`}>
-                    <Button variant="secondary">Edit</Button>
-                    </Link>
+                    <Button
+                      variant="secondary"
+                      size="sm">{translation.Edit}</Button>
+                  </Link>
 
                 </td>
               </tr>)

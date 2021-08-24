@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import { apiGet, apiDelete, apiPatch, apiPost, apiPut } from './api';
+import { apiGet, apiDelete, apiPost, apiPut } from './api';
 import ApiContext from './apiContext';
 import ApiReducer from './apiReducer';
 import {
@@ -134,7 +134,6 @@ const ApiState = props => {
     })
   }
 
-
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   return (
@@ -159,6 +158,7 @@ const ApiState = props => {
         deleteTask,
         addCategory,
         addPerson,
+        addStatus
       }}
     >
       {props.children}

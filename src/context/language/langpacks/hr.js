@@ -23,5 +23,8 @@ export const HR_PACK = {
   "Tasks" : "Zadaci",
   "Submit" : "Pošalji",
   "InsertTask" : "Dodaj zadatak",
-  "Task" : "Zadatak"
+  "Task" : "Zadatak",
+  "ExportJSON" : "Izvezi kao JSON",
+  "ExportXML" : "Izvezi kao XML",
+  "Edit" : "Uredi",
 }
