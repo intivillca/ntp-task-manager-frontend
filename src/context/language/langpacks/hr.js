@@ -21,4 +21,6 @@ export const HR_PACK = {
   "AddStatus" : "Dodaj status",
   "GenerateReport" : "Napravi izvještaj",
   "Tasks" : "Zadaci",
+  "Submit" : "Pošalji",
+  "InsertTask" : "Dodaj zadatak"
 }
