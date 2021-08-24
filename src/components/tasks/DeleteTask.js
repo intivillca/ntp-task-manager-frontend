@@ -1,20 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ApiContext from '../../context/api/apiContext';
 import { Col, Spinner, Container, Form, Button, Row } from 'react-bootstrap';
+import languageContext from '../../context/language/languageContext';
+import { useHistory } from 'react-router-dom';
 
 
 export const DeleteTask = (props) => {
   const context = useContext(ApiContext)
   const { getAll, loading, tasks, deleteTask } = context;
+  const langContext = useContext(languageContext);
+  const translation = langContext.langPack;
+  const history = useHistory()
+  
   useEffect(() => {
     getAll();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [taskId, setTaskId] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     deleteTask(taskId);
-    props.history.push("/")
+    history.push("/")
   };
   
   const changeTaskId = (ev) => {
@@ -25,7 +32,7 @@ export const DeleteTask = (props) => {
   if (loading) {
     return (
       <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
+        <span className="sr-only"></span>
       </Spinner>
     );
   }
@@ -34,15 +41,14 @@ export const DeleteTask = (props) => {
     console.log(taskId);
     return (
       <Container style={{ padding: "100px" }}>
-        <h1>Insert task</h1>
+        <h1>{translation.DeleteTask}</h1>
         <Form onSubmit={handleSubmit}>
 
           <Row>
             <Form.Group as={Col} controlId="taskid">
-              <Form.Label column sm={2}>Task</Form.Label>
               <Col>
                 <Form.Control onChange={changeTaskId} as="select" name="taskid">
-                  <option key="0" value="">Tasks</option>
+                  <option key="0" value="">{translation.Tasks}</option>
                   {
                     tasks.map(task =>
                       <option key={task.id} value={task.id}>{task.taskname}</option>
@@ -55,7 +61,7 @@ export const DeleteTask = (props) => {
           <br/>
           <Row>
             <Button block type="submit" variant="dark" className="submit" >
-              Submit
+              {translation.Submit}
             </Button>
           </Row>
 

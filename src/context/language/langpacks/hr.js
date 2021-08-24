@@ -27,4 +27,5 @@ export const HR_PACK = {
   "ExportJSON" : "Izvezi kao JSON",
   "ExportXML" : "Izvezi kao XML",
   "Edit" : "Uredi",
+  "Search" : "Pretraži"
 }

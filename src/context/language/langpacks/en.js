@@ -27,4 +27,5 @@ export const ENG_PACK = {
   "ExportJSON" : "Export as JSON",
   "ExportXML" : "Export as XML",
   "Edit" : "Edit",
+  "Search" : "Search"
 }

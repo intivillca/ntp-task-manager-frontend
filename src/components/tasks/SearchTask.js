@@ -37,7 +37,7 @@ export const SearchTask = (props) => {
         <Row>
           <Form.Group as={Col} controlId="task_name">
             <InputGroup>
-              <Form.Control onChange={handleChange} name="taskname" type="text" placeholder={translation.TaskName} />
+              <Form.Control onChange={handleChange} name="taskname" type="text" placeholder={translation.Search} />
               <Button variant="secondary" type="submit">
                 <FontAwesomeIcon icon="search" />
               </Button>
