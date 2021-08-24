@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button, Col } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-export const FunctionButton = (props) => {
+export const FunctionButton = (props , variant = "dark" ) => {
   return (
-      <Button variant="dark" size="lg" block as={Link} to={props.link}>
+      <Button variant={props.variant} size="lg" as={Link} to={props.link}>
         <FontAwesomeIcon icon={props.icon} />
         <div className="button-text">
           {props.text}

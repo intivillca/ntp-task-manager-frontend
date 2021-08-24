@@ -2,23 +2,29 @@ import {
   SET_EN,
   SET_HR
 } from '../types';
-import { ENG_PACK } from './langpacks/en';
-import { HR_PACK } from './langpacks/hr';
+import {
+  ENG_PACK
+} from './langpacks/en';
+import {
+  HR_PACK
+} from './langpacks/hr';
 
 
 export default (state, action) => {
-  switch(action.type){
+  switch (action.type) {
     case SET_HR:
-      return{
+      return {
         ...state,
-        langPack: HR_PACK
+        langPack: HR_PACK,
+          lang: "HR"
       }
       case SET_EN:
-        return{
+        return {
           ...state,
-          langPack: ENG_PACK
+          langPack: ENG_PACK,
+          lang: 'ENG'
         }
-    default:
-      return state;
+        default:
+          return state;
   }
 }

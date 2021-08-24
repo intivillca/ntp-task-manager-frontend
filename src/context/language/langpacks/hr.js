@@ -15,6 +15,10 @@ export const HR_PACK = {
   "AddTask" : "Dodaj zadatak",
   "UpdateTask" : "Ažuriraj zadatak",
   "DeleteTask": "Obriši zadatak",
-  "Category" : "Kategorija",
-  "Home" : "Naslovna"
+  "Home" : "Naslovna",
+  "AddCategory" : "Dodaj kategoriju",
+  "AddPerson" : "Dodaj osobu",
+  "AddStatus" : "Dodaj status",
+  "GenerateReport" : "Napravi izvještaj",
+  "Tasks" : "Zadaci",
 }

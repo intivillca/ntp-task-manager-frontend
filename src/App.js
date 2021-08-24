@@ -7,7 +7,7 @@ import './App.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faTasks, faTrash, faUser, faExclamationCircle, faSitemap, faEdit, faFile, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faTasks, faTrash, faUser, faHistory, faSitemap, faEdit, faFile, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import ApiState from './context/api/apiState';
 import LanguageState from './context/language/languageState';
@@ -15,7 +15,7 @@ import { AddTask } from './components/tasks/AddTask';
 import { DeleteTask } from './components/tasks/DeleteTask';
 import { UpdateTask } from './components/tasks/UpdateTask';
 
-library.add(fab, faTasks, faTrash, faUser, faExclamationCircle, faSitemap, faEdit, faFile, faSearch);
+library.add(fab, faTasks, faTrash, faUser, faHistory, faSitemap, faEdit, faFile, faSearch);
 
 const App = () => {
   return (

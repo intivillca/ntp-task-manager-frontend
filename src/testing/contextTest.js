@@ -8,8 +8,8 @@ import { UpdateTask } from '../components/tasks/UpdateTask';
 import { DeleteTask } from '../components/tasks/DeleteTask';
 import { SearchTask } from '../components/tasks/SearchTask';
 import { apiGet } from '../context/api/api';
-import { SpcTable } from '../components/ui/SpcTable';
-import { AddSpc } from '../components/ui/AddSpc';
+import { SpcTable } from '../components/spc/SpcTable';
+import { AddSpc } from '../components/spc/AddSpc';
 
 export const ContextTest = () => {
   const context = useContext(ApiContext)

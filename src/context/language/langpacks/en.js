@@ -15,6 +15,10 @@ export const ENG_PACK = {
   "AddTask" : "Add Task",
   "UpdateTask" : "Update Task",
   "DeleteTask": "Delete Task",
-  "Category" : "Category",
-  "Home" : "Home"
+  "Home" : "Home",
+  "AddCategory" : "Add Category",
+  "AddPerson" : "Add Person",
+  "AddStatus" : "Add Status",
+  "GenerateReport" : "Generate Report",
+  "Tasks": "Tasks"
 }

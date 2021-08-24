@@ -1,28 +1,51 @@
 import React, { Fragment, useContext } from 'react'
 
-import { ChangeLang } from '../components/ui/ChangeLang'
 import { HeaderNav } from '../components/ui/HeaderNav'
 import { TaskTable } from '../components/ui/TaskTable'
 import { FunctionButton } from '../components/ui/FunctionButton'
-import { Row, Container } from 'react-bootstrap'
+import { Row, Container, ButtonGroup } from 'react-bootstrap'
 import languageContext from '../context/language/languageContext'
-import { ContextTest } from '../testing/contextTest'
 import { SearchTask } from '../components/tasks/SearchTask'
 
 
-const Main = () => {
+const Main = (props) => {
   const langContext = useContext(languageContext);
   const translation = langContext.langPack;
   return (
     <Fragment>
-      <ContextTest />
       <HeaderNav />
       <Container className="main" style={{ padding: "50px" }}>
-        <SearchTask />
-        <TaskTable/>
-      </Container>
 
-      <ChangeLang />
+        <Container className="justify-content-between">
+          <Row>
+            <ButtonGroup>
+              <FunctionButton
+                variant={"dark"}
+                link={"add"}
+                icon={"tasks"}
+                text={translation.AddTask} />
+
+              <FunctionButton
+                variant={"dark"}
+                link={"update"}
+                icon={"edit"}
+                text={translation.UpdateTask} />
+
+              <FunctionButton
+                variant={"dark"}
+                link={"delete"}
+                icon={"trash"}
+                text={translation.DeleteTask} />
+            </ButtonGroup>
+          </Row>
+        </Container>
+
+
+        <SearchTask />
+
+        <TaskTable />
+
+      </Container>
     </Fragment>
   )
 }

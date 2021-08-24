@@ -1,6 +1,5 @@
-import React, {useState, useContext} from 'react'
+import React, {useState} from 'react'
 import { Form, Col, Button, Container, Row } from 'react-bootstrap'
-import ApiContext from '../../context/api/apiContext';
 
 export const AddSpc = (props) => {
   const [formData, setFormData] = useState({});
