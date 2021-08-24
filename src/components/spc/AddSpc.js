@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
 import { Form, Col, Button, Container, Row } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom';
 
 export const AddSpc = (props) => {
   const [formData, setFormData] = useState({});
+  const history = useHistory();
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     props.function(formData);
+    history.push(`/`)
   };
 
   const handleChange = (e) => {
@@ -22,7 +25,7 @@ export const AddSpc = (props) => {
       })
     )
   };
-
+  console.log(formData)
 
   return (
     <Container style={{padding: "100px"}}>
@@ -30,19 +33,16 @@ export const AddSpc = (props) => {
         <Form onSubmit={handleSubmit}>
           <Row>
             <Form.Group as={Col} controlId="status">
-              <Form.Label column sm={2}>
-                Category
-                </Form.Label>
               <Col>
-                <Form.Control onChange={handleChange} name="category" type="text" placeholder="Category" />
+                <Form.Control onChange={handleChange} name={props.paramName} type="text" placeholder={props.title} />
               </Col>
             </Form.Group>
           </Row>
           <br/>
           <Row>
             <Button block type="submit" variant="dark" className="submit" >
-              Submit
-                </Button>
+              {props.submit}
+            </Button>
           </Row>
         </Form>
       </Container>

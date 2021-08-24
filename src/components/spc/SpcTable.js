@@ -25,7 +25,6 @@ export const SpcTable = (props) => {
           <thead>
             <tr>
               <th>{props.tableParam}</th>
-              <th>...</th>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +32,6 @@ export const SpcTable = (props) => {
               props.data.map(item =>
               (<tr key={item.id}>
                 <td>{props.paramName2 ? item[props.paramName] + ' ' + item[props.paramName2] : item[props.paramName]}</td>
-                <td></td>
               </tr>)
               )
             }

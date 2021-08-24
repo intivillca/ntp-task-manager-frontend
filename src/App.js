@@ -14,6 +14,7 @@ import LanguageState from './context/language/languageState';
 import { UpdateTaskRoute } from './routes/UpdateTaskRoute';
 import { AddTaskRoute } from './routes/AddTaskRoute';
 import { DeleteTaskRoute } from './routes/DeleteTaskRoute';
+import { StatusRoute } from './routes/StatusRoute';
 
 library.add(fab, faTasks, faTrash, faUser, faHistory, faSitemap, faEdit, faFile, faSearch);
 
@@ -27,6 +28,7 @@ const App = (props) => {
               <ProtectedRoute path="/update/:taskId?" component={UpdateTaskRoute} exact />
               <ProtectedRoute path="/delete" component={DeleteTaskRoute} exact />
               <ProtectedRoute path="/add" component={AddTaskRoute} exact />
+              <ProtectedRoute path="/status" component={StatusRoute} exact />
               <ProtectedRoute path="/" component={Main} exact />
               <Route path="/login" component={Login} />
             </Switch>
