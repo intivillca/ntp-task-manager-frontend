@@ -16,6 +16,7 @@ import { AddTaskRoute } from './routes/AddTaskRoute';
 import { DeleteTaskRoute } from './routes/DeleteTaskRoute';
 import { StatusRoute } from './routes/StatusRoute';
 import { CategoryRoute } from './routes/CategoryRoute';
+import { PersonRoute } from './routes/PersonRoute';
 
 library.add(fab, faTasks, faTrash, faUser, faHistory, faSitemap, faEdit, faFile, faSearch);
 
@@ -31,6 +32,7 @@ const App = (props) => {
               <ProtectedRoute path="/add" component={AddTaskRoute} exact />
               <ProtectedRoute path="/status" component={StatusRoute} exact />
               <ProtectedRoute path="/category" component={CategoryRoute} exact />
+              <ProtectedRoute path="/person" component={PersonRoute} exact />
               <ProtectedRoute path="/" component={Main} exact />
               <Route path="/login" component={Login} />
             </Switch>
